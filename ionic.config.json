@@ -1,0 +1,8 @@
+{
+  "name": "Planner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "d6e0873f"
+}
