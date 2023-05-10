@@ -1,0 +1,35 @@
+<ion-list>
+  <ion-item
+    *ngFor="let item of items$ | async; index as idx"
+    [ngStyle]="{ order: -idx }"
+  >
+    <ion-input [value]="item.description"></ion-input>
+    <ion-button
+      fill="outline"
+      shape="round"
+      slot="end"
+      [ngStyle]="{ '--border-width': 0 }"
+      (click)="deleteTodo(item)"
+    >
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
+    <ion-checkbox
+      slot="start"
+      [checked]="item.completed"
+      (ionChange)="markAsComplete($any($event), item)"
+    ></ion-checkbox>
+  </ion-item>
+
+  <ion-item class="search-item">
+    <ion-input
+      placeholder="TODO: Enter the item"
+      #ionInput
+      (keyup.enter)="addTodo(ionInput)"
+    ></ion-input>
+    <ion-fab horizontal="end">
+      <ion-fab-button size="small" (click)="addTodo(ionInput)">
+        <ion-icon name="send-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-item>
+</ion-list>
